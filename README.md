@@ -5,6 +5,7 @@
 * 贝叶斯估计方法
 * 极值理论(GEV theory)
 * Max-stable process
+* 空间模型
 
 ![](https://github.com/lzx89757/Actuarial-Literatures/blob/master/%E8%AE%BA%E6%96%87%E6%8E%92%E5%BA%8F.png)
 
@@ -19,12 +20,13 @@
 
 
 ### 第四周，报告人：赵亮、崔跃
-*
+* [A max-stable process model for rainfall extremes at different accumulation durations 2016 Weather and Climate Extremes.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/A%20max-stable%20process%20model%20for%20rainfall%20extremes%20at%20different%20accumulation%20durations%202016%20Weather%20and%20Climate%20Extremes.pdf)
 
 ### 第五周，报告人：张译元、高明慧
+* [Tukey max-stable processes for spatial extremes.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Tukey%20max-stable%20processes%20for%20spatial%20extremes.pdf)
 
-
-### 第流周，报告人：郭哲琦、蔡笑炜
+### 第六周，报告人：郭哲琦、蔡笑炜
+* [A flexible dependence model for spatial extremes.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/A%20flexible%20dependence%20model%20for%20spatial%20extremes.pdf)
 
 
 ### 第七周，报告人：路倩、来耀华
