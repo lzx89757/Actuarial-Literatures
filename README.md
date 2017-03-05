@@ -6,7 +6,7 @@
 * 极值理论
 * Max-stable process
 
-![https://github.com/lzx89757/Actuarial-Literatures/blob/master/%E8%AE%BA%E6%96%87%E6%8E%92%E5%BA%8F.png]
+![](https://github.com/lzx89757/Actuarial-Literatures/blob/master/%E8%AE%BA%E6%96%87%E6%8E%92%E5%BA%8F.png)
 
 ### 第一周，报告人：李洺樟、黄一凡
 * Faster estimation of Bayesian models in ecology using Hamiltonian Monte Carlo
