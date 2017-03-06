@@ -1,9 +1,9 @@
-# Actuarial-Literatures
+# Seminar - 2017
 ## provide several papers and R code
 主要包括以下内容
 
 * 贝叶斯估计方法
-* 极值理论
+* 极值理论(GEV theory)
 * Max-stable process
 
 ![](https://github.com/lzx89757/Actuarial-Literatures/blob/master/%E8%AE%BA%E6%96%87%E6%8E%92%E5%BA%8F.png)
