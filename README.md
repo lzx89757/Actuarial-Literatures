@@ -2,21 +2,15 @@
 ## provide several papers and R code
 主要包括以下内容
 
-* 贝叶斯估计方法
+* [贝叶斯方法在 Rstan 中的应用](https://github.com/lzx89757/Introduction-to-Rstan)
 * 极值理论(GEV theory)
 * Max-stable process
 * 空间模型
 
-![](https://github.com/lzx89757/Actuarial-Literatures/blob/master/%E8%AE%BA%E6%96%87%E6%8E%92%E5%BA%8F.png)
-
-### [贝叶斯方法在 Rstan 中的应用](https://github.com/lzx89757/Introduction-to-Rstan)
-Rstan 软件的安装、相关代码入门以及基本模型拟合与应用
-
 ### 第一周，报告人：李洺樟、黄一凡
 主要涉及到了 Rejection sampling、Importance sampling、
-Metropolis-Hastings 以及 HMC 算法的具体步骤
+Metropolis-Hastings 以及 HMC 算法的具体步骤。参考文献包括：
 
-**参考文献**
 * [Faster estimation of Bayesian models in ecology using Hamiltonian Monte Carlo.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Faster%20estimation%20of%20Bayesian%20models%20in%20ecology%20using%20Hamiltonian%20Monte%20Carlo.pdf) 及其 [R 代码](https://github.com/colemonnahan/gradmcmc)
 * Bayesian data analysis - Chapter 11
 * [The No-U-Turn Sampler.pdf] 
