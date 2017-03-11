@@ -1,9 +1,13 @@
-# Seminar - 2017
-## provide several papers and R code
-主要包括以下内容
+# 风险管理与精算学术研讨会
+
+> 时间：2017 年 2 月 - 2017 年 6 月
+> 地点：中国人民大学明德主楼
+
+研讨会的主要包括：
 
 * [贝叶斯方法在 Rstan 中的应用](https://github.com/lzx89757/Introduction-to-Rstan)
 * 极值理论(GEV theory)
+* 泊松过程(Poisson piont process)
 * Max-stable process
 * 空间模型
 
@@ -13,8 +17,8 @@ Metropolis-Hastings 以及 HMC 算法的具体步骤。参考文献包括：
 
 * [Faster estimation of Bayesian models in ecology using Hamiltonian Monte Carlo.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Faster%20estimation%20of%20Bayesian%20models%20in%20ecology%20using%20Hamiltonian%20Monte%20Carlo.pdf) 及其 [R 代码](https://github.com/colemonnahan/gradmcmc)
 * Bayesian data analysis - Chapter 11
-* [The No-U-Turn Sampler.pdf] 
-* [讲稿]
+* [The No-U-Turn Sampler.pdf](https://github.com/lzx89757/Seminar-2017/blob/master/week%201/The%20No-U-Turn%20Sampler.pdf)
+* [讲稿](https://github.com/lzx89757/Seminar-2017/blob/master/week%201/Faster%20estimation%20of%20Bayesian%20models(PPT).pptx)
 
 
 ### 第二周，报告人：王海淘、张碧怡
