@@ -1,6 +1,7 @@
 # 风险管理与精算学术研讨会
 
 > 时间：2017 年 2 月 - 2017 年 6 月
+> 
 > 地点：中国人民大学明德主楼
 
 研讨会的主要包括：
@@ -13,16 +14,36 @@
 
 ### 第一周，报告人：李洺樟、黄一凡
 主要涉及到了 Rejection sampling、Importance sampling、
-Metropolis-Hastings 以及 HMC 算法的具体步骤。参考文献包括：
+Metropolis-Hastings 以及 HMC 算法的具体步骤。HMC 算法相当于在抽样过程中增加了一个水平方向的趋势，使得 HMC
+。参考文献包括：
 
-* [Faster estimation of Bayesian models in ecology using Hamiltonian Monte Carlo.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Faster%20estimation%20of%20Bayesian%20models%20in%20ecology%20using%20Hamiltonian%20Monte%20Carlo.pdf) 及其 [R 代码](https://github.com/colemonnahan/gradmcmc)
+* [Faster estimation of Bayesian models in ecology using Hamiltonian Monte Carlo.pdf](https://github.com/lzx89757/Seminar-2017/blob/master/week%201/Faster%20estimation%20of%20Bayesian%20models%20in%20ecology%20using%20Hamiltonian%20Monte%20Carlo.pdf) 及其 [R 代码](https://github.com/colemonnahan/gradmcmc)
 * Bayesian data analysis - Chapter 11
 * [The No-U-Turn Sampler.pdf](https://github.com/lzx89757/Seminar-2017/blob/master/week%201/The%20No-U-Turn%20Sampler.pdf)
 * [讲稿](https://github.com/lzx89757/Seminar-2017/blob/master/week%201/Faster%20estimation%20of%20Bayesian%20models(PPT).pptx)
 
 
 ### 第二周，报告人：王海淘、张碧怡
-* [Stochastic loss reserving using bayesian MCMC models.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Stochastic%20loss%20reserving%20using%20bayesian%20MCMC%20models.PDF)
+随机性准备金评估模型：
+
+* Mack model
+
+* Bootstrap ODP
+假设增量赔款服从过离散的泊送分布，可以运用 GLM 进行估计，再运用 Bootstrap 抽样计算预测值的方差
+
+* Corelated Chain-Ladder(CCL) Model - 相关链锑模型
+假设累积赔款
+服从对数正态分布
+
+$\mu_{w,d}=\alpha_{w} + \beta_{\alpha}+\rho(\log(C_{w,d})-\mu_{w,d})$  
+
+* Leveled Chian Ladder(LCL) Model - 水平链
+
+其中 $w,d$ 分别对应事故年和进展年
+
+* CIT（相关增量趋势模型）
+* CSR（结案率变化模型）
+* 参考文献：[Stochastic loss reserving using bayesian MCMC models.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Stochastic%20loss%20reserving%20using%20bayesian%20MCMC%20models.PDF)
 
 ### 第三周，报告人：陈菲菲
 * [Estimating extreme tail risk measures with generalized Pareto distribution.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Estimating%20extreme%20tail%20risk%20measures%20with%20generalized%20Pareto%20distribution.pdf)
