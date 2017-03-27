@@ -6,19 +6,21 @@
 # This script uses the "MackChainLadder" function as it existed on 9/1/2014
 #
 rm(list = ls())      # clear workspace"
-setwd("G:/作业/研究生/研一下/精算理论与应用/准备金数据")
+setwd("F:/Github - LabtopLee/Seminar-2017/week 2/triangle data")
 #
 # user inputs
 #
-insurer.data="comauto_pos.csv"
-#insurer.data="ppauto_pos.csv"
-#insurer.data="wkcomp_pos.csv"
-#insurer.data="othliab_pos.csv"
-#insurer.data="prodliab_pos.csv"
-#insurer.data="medmal_pos.csv"
-grpcode="353"
-losstype="incloss"  #"incloss" if incurred loss or "cpdloss" if paid loss
-a=read.csv(insurer.data)
+insurer.data = "comauto_pos.csv"
+#insurer.data = "ppauto_pos.csv"
+#insurer.data = "wkcomp_pos.csv"
+#insurer.data = "othliab_pos.csv"
+#insurer.data = "prodliab_pos.csv"
+#insurer.data = "medmal_pos.csv"
+grpcode = "353"
+losstype = "incloss"  #"incloss" if incurred loss or "cpdloss" if paid loss
+a = read.csv(insurer.data)
+library(data.table)
+a = data.table(a)
 #
 # function to get Schedule P triangle data given ins group and line of business
 #
@@ -75,7 +77,7 @@ if(losstype=="incloss") aloss=adata$incloss else aloss=adata$cpdloss
 #
 library(ChainLadder)
 # 将数据框形式转化为流量三角形形式
-rtriangle=as.triangle(rdata,origin="w",dev="d",value=losstype)     
+rtriangle = as.triangle(rdata,origin="w",dev="d",value=losstype)     
 mcl=MackChainLadder(rtriangle,est.sigma="Mack")
 #
 # Calculate summary statistic for Mack model
