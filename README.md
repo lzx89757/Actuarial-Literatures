@@ -37,7 +37,7 @@ HMC 算法源于物理中研究的小球在光滑平面上的运动轨迹，通�
 
 * $\phi$ ：中间变量
 
-* $\varpesilo$ ：梯度（时间）
+* $\varepsilon$ ：梯度（时间）
 
 * ：混淆矩阵
 
@@ -57,10 +57,19 @@ HMC 算法源于物理中研究的小球在光滑平面上的运动轨迹，通�
 参考文献：[Stochastic loss reserving using bayesian MCMC models.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Stochastic%20loss%20reserving%20using%20bayesian%20MCMC%20models.PDF)
 
 随机性准备金评估模型主要包含 Mack 模型、Bootstrap ODP 模型、相关链锑模型、相关增量趋势模型和结案率变化模型。
-* Mack model
+
+#### 数据说明
+
+4个险种(Commercial Auto, Personal Auto, Workers Compensation, Other
+Liability)中，每个险种选择 50 家保险公司的[准备金数据](http://www.casact.org/research/index.cfm?fa=loss_reserves_data)。
+
+#### 模型设定
 
 
-* Bootstrap ODP
+* **Mack model(1993, 1994)**
+  Mack 模型是链锑法的推广，假设
+
+* **Bootstrap ODP**
   假设增量赔款服从过离散的泊送分布，可以运用 GLM 进行估计，再运用 Bootstrap 抽样计算预测值的方差
 
 
@@ -84,35 +93,24 @@ HMC 算法源于物理中研究的小球在光滑平面上的运动轨迹，通�
 * CSR（结案率变化模型）
 
 
-
-### 极值理论
-
-
-
-
-
-### 第三周
+-------------------
+### Week 3: 极值理论与广义帕累托分布
 * [Estimating extreme tail risk measures with generalized Pareto distribution.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Estimating%20extreme%20tail%20risk%20measures%20with%20generalized%20Pareto%20distribution.pdf)
 
 
-### 第四周
+
+
+-------------------
+### 
+
 * [A max-stable process model for rainfall extremes at different accumulation durations 2016 Weather and Climate Extremes.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/A%20max-stable%20process%20model%20for%20rainfall%20extremes%20at%20different%20accumulation%20durations%202016%20Weather%20and%20Climate%20Extremes.pdf)
 
-### 第五周
+### 
 * [Tukey max-stable processes for spatial extremes.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Tukey%20max-stable%20processes%20for%20spatial%20extremes.pdf)
 
-### 第六周
+### 
 * [A flexible dependence model for spatial extremes.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/A%20flexible%20dependence%20model%20for%20spatial%20extremes.pdf)
 
 
-### 第七周
 
-
-### 第八周
-
-
-### 第九周
-
-
-### 第十周
 
