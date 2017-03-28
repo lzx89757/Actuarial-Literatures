@@ -17,7 +17,6 @@
 * 空间模型
 
 -------------------
-
 ### Week 1: Hamiltonian Monte Carlo 算法
 
 参考文献：
@@ -51,31 +50,42 @@ Liability)中，每个险种选择 50 家保险公司的[流量三角形数据](
 
 ####  一、Multiplicative Chainladder - Mack model(1993, 1994)
 
-Mack 模型是，也称之为多元链锑法模型，是传统链锑法的推广，其 BLUE 的估计值与链锑法得到的结果等价。该方法将累积赔款 $\tilde{C}_{w,d+1}$作为随机变量，属于随机性准备金评估模型的一种，模型设定如下：
+Mack 模型是，也称之为多元链锑法模型，是传统链锑法的推广，其 BLUE 的估计值与链锑法得到的结果等价。该方法将累积赔款 $\tilde{C}_{w,d+1}$ 作为随机变量，属于随机性准备金评估模型的一种，模型设定如下：
+
 $$
-  \text{E}[\tilde{C}_{w,d+1}|C_{w,1},...,C_{w,d}]=C_{w,d}\cdot f_{d}\\
-  \text{Var}[\tilde{C}_{w,d+1}|C_{w,1},...,C_{w,d}]=C_{w,d}\cdot \alpha_{d}^{2}
-$$
-其中，事故年 $w=2,...,K$ 的累积赔款预测值为
-$$
-  \hat{C}_{w,K}=C_{w,k+1-w}\cdot \hat{f}_{K+1-w}\cdot \cdots \cdot \hat{f}_{K-1}\\
-  \hat{f}_{d}=\frac{\sum_{w=1}^{K-d}C_{w,d+1}}{\sum_{w=1}^{K-d}C_{w,d}}
+\begin {aligned} 
+  &\text{E}[\tilde{C}_{w,d+1}|C_{w,1},...,C_{w,d}]=C_{w,d}\cdot f_{d}\\
+  &\text{Var}[\tilde{C}_{w,d+1}|C_{w,1},...,C_{w,d}]=C_{w,d}\cdot \alpha_{d}^{2}
+\end {aligned}
 $$
 
-运用 R 软件的 *ChainLadder* 包可以计算得到累积赔款 $\text{SD}[\tilde{C}_{w,K}]$ 和 $\text{SD}[\sum_{w=2}^{K}\tilde{C}_{w,K}]$ 的标准差，也可以通过显示表达式计算模型的预测均方误差 $\text{MSEP}$ (bootstrap 方法同样适用)。
+其中，事故年 $w=2,...,K$ 的累积赔款预测值为
+
+$$
+\begin {aligned} 
+\hat{C}_{w,K}&=C_{w,k+1-w}\cdot \hat{f}_{K+1-w}\cdot \cdots \cdot \hat{f}_{K-1}\\
+ \hat{f}_{d}&=\frac{\sum_{w=1}^{K-d}C_{w,d+1}}{\sum_{w=1}^{K-d}C_{w,d}}
+\end {aligned}
+$$
+
+运用 R 软件的 *ChainLadder* 包可以计算得到累积赔款 $$\text{SD}[\tilde{C}_{w,K}]​$$ 和 $$\text{SD}[\sum_{w=2}^{K}\tilde{C}_{w,K}]​$$ 的标准差，也可以通过显示表达式计算模型的预测均方误差 $\text{MSEP}​$ (bootstrap 方法同样适用)。
 
 **Mack 模型的缺陷在于：**
-  1. 假设同一事故年在不同进展年之间是相互独立的 - 随着时间的推移，进展年的累积赔款可能服从不同的部分
-  2. 参数过多，可能存在过拟合现象 - $\alpha_{d}$ 在不同的进展年下都不同
-  3. 模型可以处理负值或者零值，但是对于稀疏数据不适用
-  4. 对于长尾或者厚尾业务，方差参数估计有困难
+
+1. 假设同一事故年在不同进展年之间是相互独立的 - 随着时间的推移，进展年的累积赔款可能服从不同的部分
+
+2. 参数过多，可能存在过拟合现象 - $\alpha_{d}$ 在不同的进展年下都不同
+3. 模型可以处理负值或者零值，但是对于稀疏数据不适用
+4. 对于长尾或者厚尾业务，方差参数估计有困难
 
 #### 二、Over-Dispersed Poisson Model - ODP model (2002)
 
 ODP 模型也称之为过离散泊松模型。该方法假设**增量赔款**服从过离散的泊送分布，可以运用 GLM 进行估计，再运用 Bootstrap 抽样计算预测值的标准差和均方误差。模型设定如下：
 $$
-\text{E}[\tilde{I}_{w,d}]=\alpha_{w}\cdot \beta_{d}\\
-\text{Var}[\tilde{I}_{w,d}]=\phi\cdot \alpha_{w}\cdot\beta_{d}
+\begin {aligned} 
+\text{E}[\tilde{I}_{w,d}]&=\alpha_{w}\cdot \beta_{d}\\
+\text{Var}[\tilde{I}_{w,d}]&=\phi\cdot \alpha_{w}\cdot\beta_{d}
+\end {aligned}
 $$
 
 #### 三、The Correlated Chain-Ladder (CCL) Model - 相关链锑模型
@@ -87,17 +97,21 @@ $$
 
 假设累积赔款 $\tilde{C}_{w,d}$ 服从参数为 $(\mu_{w,d}, \sigma_{d})$ 的**对数正态分布**，且有 $\sigma_{1} > \sigma_{2} > \dots > \sigma_{10}$，同时假设事故年之间是累积赔款是相关的。模型设定如下：
 $$
-\mu_{1,d} = \alpha_{1} + \beta_{d}\\
-\mu_{w,d}=\alpha_{w} + \beta_{\alpha}+\rho[\log(C_{w,d})-\mu_{w,d}]
+\begin {aligned} 
+\mu_{1,d} &= \alpha_{1} + \beta_{d}\\
+\mu_{w,d}&=\alpha_{w} + \beta_{\alpha}+\rho[\log(C_{w,d})-\mu_{w,d}]
+\end {aligned}
 $$
 其中 $w,d$ 分别对应事故年和进展年，$\rho$ 为随机变量 $\log(\tilde{C}_{w-1,d})$ 与 $\log(\tilde{C}_{w,d})$ 的相关系数。模型的先验分布为：
 $$
-\alpha_{w} \sim \text{normal}(\log(\text{Premium_{w}})+logelr,\sqrt{10})\\
-logelr \sim \text{uniform}(-1,0.5)\\
-\rho \sim \text{uniform}(-1,1)\\
-\beta_{d} \sim \text{uniform}(-5,5)\\
-\sigma_{d} = \sum_{i=d}^{10}\alpha_{i}\\
-\alpha_{i}\sim \text{uniform}(0,1)
+\begin {aligned} 
+&\alpha_{w}\sim \text{normal}(\log(\text{Premium_{w}})+logelr,\sqrt{10})\\
+&logelr \sim \text{uniform}(-1,0.5)\\
+&\rho \sim \text{uniform}(-1,1)\\
+&\beta_{d}\sim \text{uniform}(-5,5)\\
+&\sigma_{d} = \sum_{i=d}^{10}\alpha_{i}\\
+&\alpha_{i}\sim \text{uniform}(0,1)
+\end {aligned}
 $$
 
 另外，当 $\rho = 0$ 时，**The Leveled Chian Ladder (LCL) Model - 分层链锑模型** 是 CCL 模型的特例。
@@ -111,22 +125,26 @@ Bayesian Models for Paid Loss Data
 
 假设增量赔款 $\tilde{I}_{w,d}$ 服从**偏正态分布** (偏正态分布等价与对数正态-正态分布)，且事故年之间的增量赔款具有相关性，同时伴随着日历年的趋势效应，即 **CIT 模型**设定如下：
 $$
-\tilde{I}_{1,d}\sim \text{normal}(Z_{1,d},\delta)\\
-\tilde{I}_{w,d}\sim \text{normal}(Z_{w,d}+\rho\cdot(\tilde{I}_{w-1,d}-Z_{w-1,d})\cdot e^{\tau},\delta) \quad \text{for} \ \ \ w > 1\\
-Z_{w,d}\sim \text{lognormal}(\mu_{w,d},\sigma_{d})\quad\quad \sigma_{1}<...<\sigma_{10}\\
-\mu_{w,d}=\alpha_{w}+\beta_{d}+\tau \cdot(w+d-1)
+\begin {aligned} 
+&\tilde{I}_{1,d}\sim \text{normal}(Z_{1,d},\delta)\\
+&\tilde{I}_{w,d}\sim \text{normal}(Z_{w,d}+\rho\cdot(\tilde{I}_{w-1,d}-Z_{w-1,d})\cdot e^{\tau},\delta) \quad \text{for} \ \ \ w > 1\\
+&Z_{w,d}\sim \text{lognormal}(\mu_{w,d},\sigma_{d})\quad\quad \sigma_{1}<...<\sigma_{10}\\
+&\mu_{w,d}=\alpha_{w}+\beta_{d}+\tau \cdot(w+d-1)
+\end {aligned}
 $$
 其中，$\rho$ 表示增量赔款 $\tilde{I}_{w,d}$ 和 $\tilde{I}_{w-1,d}$ 的相关系数。模型的先验分布为：
 $$
-\sigma_{1}^{2}\sim \text{uniform}(0,0.5)\\
-\sigma_{d}^{2}\sim \text{uniform}(\sigma_{d-1}^{2},\sigma_{d-1}^{2} + 0.1)\\
-\alpha_{w} \sim \text{normal}(\log(\text{Premium_{w}})+logelr,\sqrt{10})\\
-logelr \sim \text{uniform}(-1,0.5)\\
-\rho \sim \text{uniform}(-1,1)\\
-\beta_{d} \sim \text{uniform}(0,10)\quad \text{for}\quad d=1,...,4\\
-\beta_{d} \sim \text{uniform}(0,\beta_{d-1})\quad \text{for}\quad d>4\\
-\tau \sim \text{normal}(0,0.0316)\\
-\delta \sim \text{uniform}(0,\text{Average Premium})
+\begin {aligned} 
+&\sigma_{1}^{2}\sim \text{uniform}(0,0.5)\\
+&\sigma_{d}^{2}\sim \text{uniform}(\sigma_{d-1}^{2},\sigma_{d-1}^{2} + 0.1)\\
+&\alpha_{w} \sim \text{normal}(\log(\text{Premium_{w}})+logelr,\sqrt{10})\\
+&logelr \sim \text{uniform}(-1,0.5)\\
+&\rho \sim \text{uniform}(-1,1)\\
+&\beta_{d} \sim \text{uniform}(0,10)\quad \text{for}\quad d=1,...,4\\
+&\beta_{d} \sim \text{uniform}(0,\beta_{d-1})\quad \text{for}\quad d>4\\
+&\tau \sim \text{normal}(0,0.0316)\\
+&\delta \sim \text{uniform}(0,\text{Average Premium})
+\end {aligned}
 $$
 其中，当 $\rho=0$ 时，**LIT 模型**是 **CIT 模型**的特例。
 
@@ -136,14 +154,16 @@ $$
 $$
 \mu_{w,d}=\alpha_{w} + \beta_{\alpha}\cdot(1-\gamma)^{w-1}
 $$
-其中 $w,d​$ 分别对应事故年和进展年。模型的先验分布为：
+其中 $w,d$ 分别对应事故年和进展年。模型的先验分布为：
 $$
-\alpha_{w} \sim \text{normal}(\log(\text{Premium}_{w})+logelr,\sqrt{10})\\
-logelr \sim \text{uniform}(-1,0.5)\\
-\gamma \sim \text{normal}(0,0.025)\\
-\beta_{d} \sim \text{uniform}(-5,5) \quad \beta_{10}=0 \\
-\sigma_{d} = \sum_{i=d}^{10}\alpha_{i}\\
-\alpha_{i}\sim \text{uniform}(0,1)
+\begin {aligned} 
+&\alpha_{w} \sim \text{normal}(\log(\text{Premium}_{w})+logelr,\sqrt{10})\\
+&logelr \sim \text{uniform}(-1,0.5)\\
+&\gamma \sim \text{normal}(0,0.025)\\
+&\beta_{d} \sim \text{uniform}(-5,5) \quad \beta_{10}=0 \\
+&\sigma_{d} = \sum_{i=d}^{10}\alpha_{i}\\
+&\alpha_{i}\sim \text{uniform}(0,1)
+\end {aligned}
 $$
 
 #### 六、结论
@@ -153,11 +173,10 @@ $$
 
 -------------------
 ### Week 3: 极值理论与广义帕累托分布
+参考文献：
 * [Estimating extreme tail risk measures with generalized Pareto distribution.pdf](https://github.com/lzx89757/Actuarial-Literatures/blob/master/papers/Estimating%20extreme%20tail%20risk%20measures%20with%20generalized%20Pareto%20distribution.pdf)
 
-
 文章介绍了极值尾部风险的度量，主要分为两部分：
-
 * 提出一种新的广义帕累托分布 (GPD) 的估计方法
 * 用于得到风险度量值
 * 可以运用 POT package 或者 optim 等非线性规划的函数
